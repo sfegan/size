@@ -14,5 +14,5 @@ before_install:
 script:
   - $CXX -std=c++11 -o size size.cpp
   - ./size
-  - $CXX -m32 -std=c++11 -o size32 size.cpp
-  - ./size32
+#  - $CXX -m32 -std=c++11 -o size32 size.cpp
+#  - ./size32
