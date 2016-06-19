@@ -6,10 +6,10 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
+    - g++-5
 
 before_install:
-  - export CXX=g++-4.8
+  - export CXX=g++-5
 
 script:
   - $CXX -std=c++11 -o size size.cpp
