@@ -9,7 +9,7 @@ addons:
     - g++-4.8
 
 before_install:
-  - EXPORT CC=gcc-4.8
+  - export CC=gcc-4.8
 
 script:
   - g++ -std=c++11 -o size size.cpp
