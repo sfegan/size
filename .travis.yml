@@ -9,10 +9,10 @@ addons:
     - g++-4.8
 
 before_install:
-  - export CC=gcc-4.8
+  - export CXX=gcc-4.8
 
 script:
-  - g++ -std=c++11 -o size size.cpp
+  - $CXX -std=c++11 -o size size.cpp
   - ./size
-  - g++ -m32 -std=c++11 -o size32 size.cpp
+  - $CXX -m32 -std=c++11 -o size32 size.cpp
   - ./size32
