@@ -1,6 +1,18 @@
 sudo: false
 language: cpp
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+
+before_install:
+  - EXPORT CC=gcc-4.8
+
 script:
-  - g++ -o size size.cpp
+  - g++ -std=c++11 -o size size.cpp
   - ./size
+  - g++ -m32 -std=c++11 -o size32 size.cpp
+  - ./size32

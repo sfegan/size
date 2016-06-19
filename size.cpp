@@ -14,8 +14,8 @@ const char* type_name(int x) { return "int"; }
 const char* type_name(unsigned int x) { return "unsigned int"; }
 const char* type_name(long x) { return "long"; }
 const char* type_name(unsigned long x) { return "unsigned long"; }
-const char* type_name(long long x) { return "long"; }
-const char* type_name(unsigned long long x) { return "unsigned long"; }
+const char* type_name(long long x) { return "long long"; }
+const char* type_name(unsigned long long x) { return "unsigned long long"; }
 
 #define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
 #define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name(static_cast<x>(0)))
