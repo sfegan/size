@@ -34,7 +34,6 @@ int main()
 	PRINTLEN(void*);
 
 	printf("\n");
-	PRINTTYPE(bool);
 	PRINTTYPE(int8_t);
 	PRINTTYPE(uint8_t);
 	PRINTTYPE(int16_t);
