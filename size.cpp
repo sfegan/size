@@ -16,7 +16,10 @@ SPECIALISE_TYPE(unsigned int);
 SPECIALISE_TYPE(long);
 SPECIALISE_TYPE(unsigned long);
 SPECIALISE_TYPE(long long);
-SPECIALISE_TYPE(unsigned long long);
+SPECIALISE_TYPE(float);
+SPECIALISE_TYPE(double);
+SPECIALISE_TYPE(long double);
+SPECIALISE_TYPE(wchar_t);
 
 #define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
 #define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name<x>())
@@ -33,6 +36,7 @@ int main()
 	PRINTLEN(double);
 	PRINTLEN(long double);
 	PRINTLEN(void*);
+	PRINTLEN(wchar_t);
 
 	printf("\n");
 	PRINTTYPE(int8_t);
