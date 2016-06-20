@@ -3,22 +3,23 @@
 
 using namespace std;
 
-template<typename T> const char* type_name(T x) { return "unknown"; }
-const char* type_name(bool x) { return "bool"; }
-const char* type_name(char x) { return "char"; }
-const char* type_name(signed char x) { return "signed char"; }
-const char* type_name(unsigned char x) { return "unsigned char"; }
-const char* type_name(short x) { return "short"; }
-const char* type_name(unsigned short x) { return "unsigned short"; }
-const char* type_name(int x) { return "int"; }
-const char* type_name(unsigned int x) { return "unsigned int"; }
-const char* type_name(long x) { return "long"; }
-const char* type_name(unsigned long x) { return "unsigned long"; }
-const char* type_name(long long x) { return "long long"; }
-const char* type_name(unsigned long long x) { return "unsigned long long"; }
+template<typename T> const char* type_name() { return "unknown"; }
+#define SPECIALISE_TYPE(x) template<> const char* type_name<x>() { return #x; }
+SPECIALISE_TYPE(bool);
+SPECIALISE_TYPE(char);
+SPECIALISE_TYPE(signed char);
+SPECIALISE_TYPE(unsigned char);
+SPECIALISE_TYPE(short);
+SPECIALISE_TYPE(unsigned short);
+SPECIALISE_TYPE(int);
+SPECIALISE_TYPE(unsigned int);
+SPECIALISE_TYPE(long);
+SPECIALISE_TYPE(unsigned long);
+SPECIALISE_TYPE(long long);
+SPECIALISE_TYPE(unsigned long long);
 
 #define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
-#define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name(static_cast<x>(0)))
+#define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name<x>())
 
 int main()
 {
