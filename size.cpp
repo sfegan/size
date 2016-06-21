@@ -16,6 +16,7 @@ SPECIALISE_TYPE(unsigned int);
 SPECIALISE_TYPE(long);
 SPECIALISE_TYPE(unsigned long);
 SPECIALISE_TYPE(long long);
+SPECIALISE_TYPE(unsigned long long);
 SPECIALISE_TYPE(float);
 SPECIALISE_TYPE(double);
 SPECIALISE_TYPE(long double);
