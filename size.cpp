@@ -1,26 +1,34 @@
 #include <cstdint>
 #include <stdio.h>
 
+#include <immintrin.h>
+
 using namespace std;
 
 template<typename T> const char* type_name() { return "unknown"; }
-#define SPECIALISE_TYPE(x) template<> const char* type_name<x>() { return #x; }
-SPECIALISE_TYPE(bool);
-SPECIALISE_TYPE(char);
-SPECIALISE_TYPE(signed char);
-SPECIALISE_TYPE(unsigned char);
-SPECIALISE_TYPE(short);
-SPECIALISE_TYPE(unsigned short);
-SPECIALISE_TYPE(int);
-SPECIALISE_TYPE(unsigned int);
-SPECIALISE_TYPE(long);
-SPECIALISE_TYPE(unsigned long);
-SPECIALISE_TYPE(long long);
-SPECIALISE_TYPE(unsigned long long);
-SPECIALISE_TYPE(float);
-SPECIALISE_TYPE(double);
-SPECIALISE_TYPE(long double);
-SPECIALISE_TYPE(wchar_t);
+#define SPECIALISE_TYPE_NAME(x) template<> const char* type_name<x>() { return #x; }
+SPECIALISE_TYPE_NAME(bool);
+SPECIALISE_TYPE_NAME(char);
+SPECIALISE_TYPE_NAME(signed char);
+SPECIALISE_TYPE_NAME(unsigned char);
+SPECIALISE_TYPE_NAME(short);
+SPECIALISE_TYPE_NAME(unsigned short);
+SPECIALISE_TYPE_NAME(int);
+SPECIALISE_TYPE_NAME(unsigned int);
+SPECIALISE_TYPE_NAME(long);
+SPECIALISE_TYPE_NAME(unsigned long);
+SPECIALISE_TYPE_NAME(long long);
+SPECIALISE_TYPE_NAME(unsigned long long);
+SPECIALISE_TYPE_NAME(float);
+SPECIALISE_TYPE_NAME(double);
+SPECIALISE_TYPE_NAME(long double);
+SPECIALISE_TYPE_NAME(wchar_t);
+#ifdef __SSE__
+SPECIALISE_TYPE_NAME(__m128);
+#endif
+#ifdef __AVX__
+SPECIALISE_TYPE_NAME(__m256);
+#endif
 
 #define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
 #define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name<x>())
@@ -38,6 +46,12 @@ int main()
 	PRINTLEN(long double);
 	PRINTLEN(void*);
 	PRINTLEN(wchar_t);
+#ifdef __SSE__
+	PRINTLEN(__m128);
+#endif
+#ifdef __AVX__
+	PRINTLEN(__m256);
+#endif
 
 	printf("\n");
 	PRINTTYPE(int8_t);
