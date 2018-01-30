@@ -29,6 +29,9 @@ SPECIALISE_TYPE_NAME(__m128);
 #ifdef __AVX__
 SPECIALISE_TYPE_NAME(__m256);
 #endif
+#ifdef __AVX512F__
+SPECIALISE_TYPE_NAME(__m512);
+#endif
 
 #define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
 #define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name<x>())
@@ -51,6 +54,9 @@ int main()
 #endif
 #ifdef __AVX__
 	PRINTLEN(__m256);
+#endif
+#ifdef __AVX512F__
+	PRINTLEN(__m512);
 #endif
 
 	printf("\n");
