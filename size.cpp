@@ -33,11 +33,13 @@ SPECIALISE_TYPE_NAME(__m256);
 SPECIALISE_TYPE_NAME(__m512);
 #endif
 
-#define PRINTLEN(x) printf("%-20s %-2lu    %-2lu\n",#x,sizeof(x),8*sizeof(x))
+#define PRINTLEN(x) printf("%-20s %-2lu      %-2lu\n",#x,sizeof(x),8*sizeof(x))
 #define PRINTTYPE(x) printf("%-20s %-20s\n", #x, type_name<x>())
 
 int main()
 {
+	printf("Type                 #Bytes  #Bits\n");
+	printf("----                 ------  -----\n");
 	PRINTLEN(bool);
 	PRINTLEN(char);
 	PRINTLEN(short);
@@ -60,6 +62,8 @@ int main()
 #endif
 
 	printf("\n");
+	printf("Type alias           Intrinsic type\n");
+	printf("----------           --------------\n");
 	PRINTTYPE(int8_t);
 	PRINTTYPE(uint8_t);
 	PRINTTYPE(int16_t);
