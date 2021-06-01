@@ -22,6 +22,6 @@ jobs:
       shell: bash
       run: ${CC} -o size size.cpp
       env:
-        CC: ${{ matrix.config.cc }}
+        CC: ${{ matrix.config.compiler }}
     - name: run
       run: ./size
