@@ -8,12 +8,17 @@ on:
 
 jobs:
   build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        compiler: [gcc, clang]
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
     - name: compile
-      run: gcc -o size size.cpp
+      run: $(CC) -o size size.cpp
     - name: run
       run: ./size
