@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: compile
       shell: bash
-      run: ${CC} -o size size.cpp
+      run: ${CC} -march=native -o size size.cpp
       env:
         CC: ${{ matrix.cc }}
     - name: run
